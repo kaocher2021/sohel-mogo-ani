@@ -8,6 +8,9 @@ $('.back-to-top').click(function(){
 
 });
 
+
+
+
 $(window).scroll(function(){
 
     var scrolling = $(this).scrollTop();
@@ -51,5 +54,61 @@ $('nav a').on('click', function () {
     }
 });
 
+$('.counter').counterUp({
+    delay: 5,
+    time: 1000
+});
+
+
+    $('.venobox').venobox(); 
+  
 
 });
+
+
+
+
+const second = 1000,
+      minute = second * 60,
+      hour = minute * 60,
+      day = hour * 24;
+
+//Format is (MM, DD, YYYY  hr,min,sec)
+let countDown = new Date('Mar 26, 2021 19:24:00').getTime(),
+    x = setInterval(function() {    
+
+      let now = new Date().getTime(),
+          distance = countDown - now;
+      
+      let mth = Math.floor;
+      let days = mth(distance / (day));
+      let hourss = mth((distance % (day)) / (hour));
+      let mint = mth((distance % (hour)) / (minute));
+      let secnd = mth((distance % (minute)) / second);
+      
+      function checkdigit(name){
+        if(name.toString().length < 2){
+          name= "0" + name;
+        }
+        return name;
+      }
+      
+        $('#days').text(checkdigit(days)),
+        $('#hours').text(checkdigit(hourss)),
+        $('#minutes').text(checkdigit(mint)),
+        $('#seconds').text(checkdigit(secnd));
+      
+      
+      if (distance < 0) {
+        $("#countdown").hide();
+        $("#Live").show();
+      }else{
+        $("#countdown").show();
+        $("#Live").hide();
+      }
+
+    }, 1000);
+
+
+
+    
